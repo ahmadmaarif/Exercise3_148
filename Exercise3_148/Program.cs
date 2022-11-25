@@ -45,5 +45,19 @@ namespace Exercise3_148
                 return false;
         }
 
+
+        public void traverse() /*Traverse all the node of the list*/
+        {
+            if (listEmpty())
+                Console.WriteLine("\nList is empty");
+            else
+            {
+                Console.WriteLine("\n Record in the list are : \n");
+                Node currentNode;
+                currentNode = LAST.next;
+                while (currentNode != LAST)
+                { }
+            }
+        }
     }
 }
