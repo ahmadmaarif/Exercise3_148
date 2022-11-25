@@ -44,6 +44,41 @@ namespace Exercise3_148
             else
                 return false;
         }
+        public bool deleteNode(int studentNo)
+        {
+            Node previous, current;
+            previous = current = null;
+            if (Search(studentNo, ref previous, ref current) == false)
+                return false;
+            if (studentNo == LAST.next.rollNumber)
+            {
+                current = LAST.next;
+                LAST.next = current.next;
+                return true;
+            }
+            if (studentNo == LAST.rollNumber)
+            {
+                current = LAST;
+                previous = current.next;
+                while (previous.next != LAST)
+                    previous = previous.next;
+                previous.next = LAST.next;
+                LAST = previous;
+                return true;
+            }
+            if (studentNo <= LAST.rollNumber)
+            {
+                current = LAST.next;
+                previous = LAST.next;
+                while (studentNo > current.rollNumber || previous == LAST)
+                {
+                    previous = current;
+                    current = current.next;
+                }
+                previous.next = current.next;
+            }
+            return true;
+        }
 
 
         public void traverse() /*Traverse all the node of the list*/
@@ -78,6 +113,68 @@ namespace Exercise3_148
             )
         {
             CircularList obj = new CircularList();
+            while (true)
+            {
+                try
+                {
+                    Console.WriteLine("\nMenu ");
+                    Console.WriteLine("1. View All records in the list");
+                    Console.WriteLine("2. Search for a second on the list");
+                    Console.WriteLine("3. Display the first record in the list");
+                    Console.WriteLine("4. Exit");
+                    Console.WriteLine("Enter your choice (1-4): ");
+                    char ch = Convert.ToChar(Console.ReadLine());
+                    switch (ch)
+                    {
+                        case '1':
+
+                            {
+                                obj.traverse();
+                            }
+                            break;
+                        case '2':
+                            {
+                                if (obj.listEmpty()==true)
+                                {
+                                    Console.WriteLine("\n List is empty");
+                                    break;
+
+                                }
+                                Node prev, curr;
+                                prev = curr = null;
+                                Console.Write("\nEnter yhe roll number of the " +
+                                    "student whose record is to be searched:");
+                                int num = Convert.ToInt32(Console.ReadLine());
+                                if (obj.Search(num, ref prev, ref curr) == false)
+                                    Console.WriteLine("\nRecord not found");
+                                else
+                                {
+                                    Console.WriteLine("\nRecorn found");
+                                    Console.WriteLine("\nRoll number;" + curr.rollNumber);
+                                    Console.WriteLine("\nName:" + curr.name); 
+                                }
+
+                            }
+                            break;
+                        case '3':
+                            {
+                                obj.firstNode();
+
+                            }
+                            break;
+                        case '4':
+                            return;
+                        default:
+                            { Console.WriteLine("\nInvalid option");
+                                break;
+                            }
+                    }
+                }
+                catch(Exception e)
+                { Console.WriteLine(e.ToString()); 
+                }
+
+            }
 
         }
     }
