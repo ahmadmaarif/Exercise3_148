@@ -56,8 +56,29 @@ namespace Exercise3_148
                 Node currentNode;
                 currentNode = LAST.next;
                 while (currentNode != LAST)
-                { }
+                {
+                    Console.WriteLine(currentNode.rollNumber + " " + currentNode.name + "\n");
+                    currentNode = currentNode.next;
+
+                }
+                Console.WriteLine(LAST.rollNumber+ " "+ LAST.name +"\n" );
+
             }
+        }
+        public void firstNode()
+        {
+            if (listEmpty())
+                Console.WriteLine("\nlist is empty");
+            else
+                Console.WriteLine("\nthe first second in the list is :\n\n" +
+                    LAST.next.rollNumber + " " + LAST.next.name);
+
+        }
+        static void Main(string[] args
+            )
+        {
+            CircularList obj = new CircularList();
+
         }
     }
 }
