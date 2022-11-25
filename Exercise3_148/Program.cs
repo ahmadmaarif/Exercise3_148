@@ -21,11 +21,11 @@ namespace Exercise3_148
         {
             LAST = null;
         }
-        public bool Search( int rollNo, ref Node previous, ref Node current)
+        public bool Search(int rollNo, ref Node previous, ref Node current)
         /*Search for the specified node*/
         {
             for (previous = current = LAST.next; current != LAST; previous =
-                current,current=current.next)
+                current, current = current.next)
             {
                 if (rollNo == current.rollNumber)
                     return (true);/* return true if node is found*/
@@ -36,6 +36,14 @@ namespace Exercise3_148
             else
                 return (false);/*returns false if the node is not found*/
         }
-           
+
+        public bool listEmpty()
+        {
+            if (LAST == null)
+                return true;
+            else
+                return false;
+        }
+
     }
 }
