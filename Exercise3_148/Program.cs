@@ -81,6 +81,7 @@ namespace Exercise3_148
         }
 
 
+
         public void traverse() /*Traverse all the node of the list*/
         {
             if (listEmpty())
